@@ -197,6 +197,19 @@ button {
   box-shadow: var(--shadow);
 }
 
+.hero-panel .open-card {
+  padding: 28px;
+}
+
+.hero-panel .open-card h3 {
+  margin: 0 0 12px;
+}
+
+.hero-panel .open-card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
 .panel-card {
   padding: 32px;
 }

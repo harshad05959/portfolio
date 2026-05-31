@@ -83,14 +83,16 @@ This project includes a simple Express + Nodemailer API at `server/index.js` use
 Create a `.env` file in the project root with these values (example):
 
 ```
-SMTP_HOST=smtp.example.com
+SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_SECURE=false
-SMTP_USER=you@example.com
-SMTP_PASS=your_smtp_password
-FROM_EMAIL=you@example.com
+SMTP_USER=harshadkothawale1@gmail.com
+SMTP_PASS=your_gmail_app_password
+FROM_EMAIL=harshadkothawale1@gmail.com
 TO_EMAIL=harshadkothawale1@gmail.com
 ```
+
+For Gmail, use an App Password rather than your regular Gmail account password.
 
 Start the server:
 

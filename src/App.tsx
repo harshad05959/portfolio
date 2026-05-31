@@ -6,7 +6,7 @@ const sections = [
     id: 'about',
     title: 'About',
     description:
-      'I am Harshad, a software engineer who thrives on exploring new approaches and solving hard problems with clean, high-impact solutions. I build thoughtful interfaces and backend systems that feel intuitive and perform reliably.',
+      'I am Harshad, a software engineer who thrives on exploring new approaches and solving hard problems with clean, high-impact solutions. I build thoughtful interfaces and backend systems that feel intuitive and perform reliably. I am open to work now and ready to contribute immediately.',
     items: [
       'Designing responsive web systems with modern front-end architecture',
       'Delivering API-driven back ends and scalable service integrations',
@@ -175,13 +175,6 @@ function App() {
                 <p>Experience</p>
               </div>
               <div className="stat-card">
-            <div className="panel-card codolio-card">
-              <h3>Top Highlights</h3>
-              <p>Curated code highlights and competitive profile.</p>
-              <a className="button tertiary" href="https://codolio.com/profile/codefun" target="_blank" rel="noreferrer">
-                View on Codolio
-              </a>
-            </div>
                 <span>10+</span>
                 <p>Projects shipped</p>
               </div>
@@ -189,6 +182,13 @@ function App() {
                 <span>10+</span>
                 <p>Tools mastered</p>
               </div>
+            </div>
+            <div className="panel-card open-card">
+              <h3>Open to work now</h3>
+              <p>Actively available for software engineering roles and ready to start new projects immediately.</p>
+              <a className="button tertiary" href="https://codolio.com/profile/codefun" target="_blank" rel="noreferrer">
+                View Codolio highlights
+              </a>
             </div>
           </div>
         </section>
