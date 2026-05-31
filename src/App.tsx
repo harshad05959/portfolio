@@ -150,6 +150,7 @@ function App() {
       <main>
         <section className="hero fade-up" id="home">
           <div className="hero-copy">
+            <div className="hero-badge">Open to work now</div>
             <span className="eyebrow">Software Engineer • Full Stack Developer</span>
             <h1>Exploring problems and building elegant solutions that feel fast, clear, and dependable.</h1>
             <p>

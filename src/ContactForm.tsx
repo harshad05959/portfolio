@@ -84,7 +84,20 @@ export default function ContactForm() {
 
       {status === 'success' && (
         <div style={{ color: 'var(--primary)', marginTop: 12 }}>
-              <p>Message sent successfully — I will reply soon.</p>
+          <p>Message sent successfully — I will reply soon.</p>
+          {usingEthereal === true && (
+            <p style={{ margin: 4, color: '#b45309' }}>
+              Note: email was sent through a test provider. Real delivery is not configured yet.
+            </p>
+          )}
+          {usingEthereal === false && (
+            <p style={{ margin: 4 }}>Delivered using the configured SMTP provider.</p>
+          )}
+          {previewUrl && (
+            <p style={{ margin: 4 }}>
+              Preview: <a href={previewUrl} target="_blank" rel="noreferrer">open</a>
+            </p>
+          )}
         </div>
       )}
       {status === 'error' && <p style={{ color: 'var(--muted)', marginTop: 12 }}>Failed to send message: {errorMsg}</p>}
