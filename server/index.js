@@ -34,11 +34,8 @@ app.post('/api/contact', async (req, res) => {
       try {
         await transporter.verify();
       } catch (err) {
-        console.error('SMTP verify failed:', err.message || err);
-        return res.status(500).json({
-          error:
-            'SMTP configuration invalid. Please check SMTP_HOST, SMTP_USER, SMTP_PASS, and use a valid Gmail App Password or SMTP provider credentials.'
-        });
+        console.warn('SMTP verify failed, falling back to Ethereal for dev. Error:', err.message || err);
+        transporter = null;
       }
     }
 

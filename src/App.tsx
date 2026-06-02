@@ -29,6 +29,17 @@ const sections = [
 
 const projects = [
   {
+    title: 'Multimodal Emotion Detection System',
+    stack: 'Python, BERT, CNN, MFCC, TensorFlow, MELD Dataset',
+    bullets: [
+      'Designed and developed a multimodal emotion recognition system combining text and audio inputs to overcome single-modality limitations and improve detection accuracy.',
+      'Implemented text-based emotion recognition module using BERT algorithm for contextual understanding and emotion prediction from textual data.',
+      'Built audio-based emotion recognition pipeline using MFCC feature extraction from speech signals with CNN architecture trained on the MELD dataset.',
+      'Achieved superior emotion detection performance by fusing textual and vocal emotional cues, providing reliable emotion-aware insights for virtual assistants, sentiment analysis, mental health monitoring, and human-computer interaction systems.',
+      'Optimized model inference to reduce latency while maintaining high accuracy across multiple emotion classes (happy, sad, angry, neutral, surprised, disgusted, fearful).'
+    ]
+  },
+  {
     title: 'ShareMeal',
     stack: 'MongoDB, Express.js, React.js, Node.js',
     bullets: [
@@ -234,6 +245,26 @@ function App() {
             )}
           </div>
         ))}
+
+        <section className="section projects-section fade-up" id="projects">
+          <div className="section-header">
+            <span>Projects</span>
+            <h2>Recent work</h2>
+          </div>
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <div className="project-card fade-up" key={project.title}>
+                <h3>{project.title}</h3>
+                <p className="project-stack">{project.stack}</p>
+                <ul>
+                  {project.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="section experience-section fade-up" id="experience">
           <div className="section-header">

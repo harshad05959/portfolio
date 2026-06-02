@@ -92,8 +92,6 @@ FROM_EMAIL=harshadkothawale1@gmail.com
 TO_EMAIL=harshadkothawale1@gmail.com
 ```
 
-Important: copy `.env.example` to `.env` and fill in your password there. `.env.example` is only a template and is not loaded by the server.
-
 For Gmail, use an App Password rather than your regular Gmail account password.
 
 Start the server:
