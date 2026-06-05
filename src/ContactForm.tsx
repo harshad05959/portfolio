@@ -58,6 +58,7 @@ export default function ContactForm() {
       setName('');
       setEmail('');
       setMessage('');
+      setTimeout(() => setStatus('idle'), 3000);
     } catch (err: any) {
       setStatus('error');
       setErrorMsg(err.message || 'Failed to send message');
@@ -67,27 +68,118 @@ export default function ContactForm() {
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
       <label>
-        Name
-        <input value={name} onChange={(e) => setName(e.target.value)} type="text" name="name" placeholder="Your name" required />
+        <span className="label-text">Full Name</span>
+        <input 
+          value={name} 
+          onChange={(e) => setName(e.target.value)} 
+          type="text" 
+          name="name" 
+          placeholder="John Doe" 
+          required 
+          disabled={status === 'sending'}
+        />
       </label>
       <label>
-        Email
-        <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" placeholder="you@example.com" required />
+        <span className="label-text">Email Address</span>
+        <input 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)} 
+          type="email" 
+          name="email" 
+          placeholder="you@example.com" 
+          required 
+          disabled={status === 'sending'}
+        />
       </label>
       <label>
-        Message
-        <textarea value={message} onChange={(e) => setMessage(e.target.value)} name="message" rows={5} placeholder="Tell me about your project" required />
+        <span className="label-text">Message</span>
+        <textarea 
+          value={message} 
+          onChange={(e) => setMessage(e.target.value)} 
+          name="message" 
+          rows={4} 
+          placeholder="Tell me about your project or idea..." 
+          required 
+          disabled={status === 'sending'}
+        />
       </label>
-      <button className="button primary" type="submit" disabled={status === 'sending'}>
-        {status === 'sending' ? 'Sending...' : 'Send message'}
+      <button 
+        className="button primary" 
+        type="submit" 
+        disabled={status === 'sending'}
+        style={{
+          position: 'relative',
+          background: status === 'sending' ? 'var(--primary)' : 'linear-gradient(135deg, var(--primary), var(--secondary))',
+          transition: 'all 0.3s ease'
+        }}
+      >
+        {status === 'sending' ? (
+          <>
+            <span style={{ animation: 'spin 1s linear infinite', display: 'inline-block', marginRight: '8px' }}>⚡</span>
+            Sending...
+          </>
+        ) : status === 'success' ? (
+          <>✓ Message sent!</>
+        ) : (
+          'Send Message'
+        )}
       </button>
 
       {status === 'success' && (
-        <div style={{ color: 'var(--primary)', marginTop: 12 }}>
-              <p>Message sent successfully — I will reply soon.</p>
+        <div 
+          style={{ 
+            color: 'var(--primary)', 
+            marginTop: 16,
+            padding: '12px 16px',
+            borderRadius: '12px',
+            background: 'rgba(37, 99, 235, 0.1)',
+            border: '1px solid rgba(37, 99, 235, 0.2)',
+            animation: 'slideInUp 0.4s ease'
+          }}
+        >
+          <p style={{ margin: 0 }}>✓ Thank you! I'll get back to you soon.</p>
         </div>
       )}
-      {status === 'error' && <p style={{ color: 'var(--muted)', marginTop: 12 }}>Failed to send message: {errorMsg}</p>}
+      {status === 'error' && (
+        <div 
+          style={{ 
+            color: '#ef4444', 
+            marginTop: 16,
+            padding: '12px 16px',
+            borderRadius: '12px',
+            background: 'rgba(239, 68, 68, 0.1)',
+            border: '1px solid rgba(239, 68, 68, 0.2)',
+            animation: 'slideInUp 0.4s ease'
+          }}
+        >
+          <p style={{ margin: 0 }}>✗ Error: {errorMsg}</p>
+        </div>
+      )}
+
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .label-text {
+          display: block;
+          font-weight: 600;
+          margin-bottom: 8px;
+          color: var(--text);
+        }
+      `}</style>
     </form>
   );
 }
