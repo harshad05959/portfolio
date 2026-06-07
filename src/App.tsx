@@ -86,6 +86,11 @@ const achievements = [
     label: 'LeetCode & GFG Ratings',
     value: '1800+ / 1900+',
     detail: 'Ranked in the top 4% globally on LeetCode and maintained a strong GeeksforGeeks score.'
+  },
+  {
+    label: 'Coding Hackathon Winner',
+    value: '5+ Awards',
+    detail: 'Winner in intra- and inter-college coding competitions and hackathons with strong problem-solving performance.'
   }
 ];
 
@@ -140,7 +145,7 @@ function App() {
   };
 
   return (
-    <div className="app-shell">
+    <div className="page-shell">
       <header className="topbar">
         <a className="brand" href="#home">
           Harshad Kothavale
