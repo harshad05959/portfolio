@@ -128,6 +128,7 @@ const experience = [
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('portfolio-theme') as 'light' | 'dark' | null;
@@ -150,14 +151,17 @@ function App() {
         <a className="brand" href="#home">
           Harshad Kothavale
         </a>
-        <nav className="nav-links">
-          <a href="#about">About</a>
-          <a href="#achievements">Achievements</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#experience">Experience</a>
-          <a href="#contact">Contact</a>
+        <nav className={"nav-links" + (mobileOpen ? ' open' : '')}>
+          <a href="#about" onClick={() => setMobileOpen(false)}>About</a>
+          <a href="#achievements" onClick={() => setMobileOpen(false)}>Achievements</a>
+          <a href="#skills" onClick={() => setMobileOpen(false)}>Skills</a>
+          <a href="#projects" onClick={() => setMobileOpen(false)}>Projects</a>
+          <a href="#experience" onClick={() => setMobileOpen(false)}>Experience</a>
+          <a href="#contact" onClick={() => setMobileOpen(false)}>Contact</a>
         </nav>
+        <button className="nav-toggle" onClick={() => setMobileOpen((s) => !s)} aria-label="Toggle menu">
+          {mobileOpen ? '✕' : '☰'}
+        </button>
         <button className="theme-toggle" onClick={toggleTheme}>
           {theme === 'dark' ? 'Light' : 'Dark'}
         </button>
@@ -182,6 +186,9 @@ function App() {
             </div>
           </div>
           <div className="hero-panel fade-up card-panel">
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div className="avatar" aria-hidden />
+            </div>
             <div className="panel-card">
               <h2>What I solve</h2>
               <p>Customer-facing journeys, growth-focused features, and the technical foundations behind smooth product experiences.</p>
@@ -316,6 +323,10 @@ function App() {
           </div>
         </section>
       </main>
+
+      <a className="floating-cta" href="#contact" onClick={() => setMobileOpen(false)}>
+        👋 Contact
+      </a>
 
       <footer className="footer">
         <div className="footer-inner">
